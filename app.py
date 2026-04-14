@@ -155,7 +155,7 @@ html, body, [data-testid="stAppViewContainer"]{
   max-width:1460px;
 }
 .main-title{
-  font-size:4rem;
+  font-size:4.8rem;
   line-height:1.04;
   font-weight:900;
   color:#ffffff;
@@ -169,8 +169,8 @@ html, body, [data-testid="stAppViewContainer"]{
   font-weight:700;
 }
 .title-line{
-  margin:1rem 0 1.15rem 0;
-  border-top:1px solid rgba(130,160,205,.35);
+  margin:1.2rem 0 1.35rem 0;
+  border-top:1px solid rgba(130,160,205,.22);
 }
 .info-box{
   background: rgba(15,29,51,.72);
@@ -210,7 +210,7 @@ html, body, [data-testid="stAppViewContainer"]{
 .news-title{font-size:1rem; font-weight:800; color:#f8fbff;}
 .news-meta{display:flex; justify-content:space-between; gap:10px; margin-top:5px; font-size:.83rem; color:var(--muted);}
 .link-box{
-  margin-top:24px;
+  margin-top:0;
   padding:20px 18px 16px 18px;
   border:1px solid rgba(89,115,156,.30);
   border-radius:18px;
@@ -234,7 +234,7 @@ html, body, [data-testid="stAppViewContainer"]{
 }
 .link-grid a:hover{background:rgba(28,48,80,.82);}
 .guide-box{
-  margin-top:24px;
+  margin-top:0;
   padding:20px 18px 16px 18px;
   border:1px solid rgba(89,115,156,.30);
   border-radius:18px;
@@ -251,6 +251,12 @@ html, body, [data-testid="stAppViewContainer"]{
   font-size:.92rem;
 }
 .footer a{color:#9cc8ff !important; text-decoration:none;}
+
+.soft-divider{margin:1.1rem 0 1.6rem 0; border-top:1px solid rgba(130,160,205,.18);} 
+.section-gap-top{margin-top:1.9rem;} 
+.section-gap-mid{margin-top:1.55rem;} 
+.weather-wrap{margin-bottom:.6rem;} 
+.insight-intro{margin-bottom:.4rem;} 
 .stButton > button{
   border-radius:12px !important;
   font-weight:800 !important;
@@ -597,24 +603,27 @@ def render_related_links():
 
 def render_guide():
     st.markdown('<div class="guide-box"><div class="section-title" style="margin-top:0;">미샵 뉴스 포스트 안내</div>', unsafe_allow_html=True)
-    st.markdown('<div class="guide-text">이 페이지는 패션·유통·IT·온라인마케팅·경제 뉴스를 한 화면에서 정리해 보고, 4050 여성 패션 브랜드 미샵 운영에 도움이 되는 정보만 빠르게 참고할 수 있도록 구성된 뉴스·정보 브리핑 페이지입니다.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="guide-text">이 페이지는 패션, 유통, 소비, IT, 온라인마케팅, 경제 흐름을 한 화면에서 빠르게 파악하려는 관련 업계 실무자들을 위한 뉴스·정보 브리핑 페이지입니다. 브랜드 운영자, 쇼핑몰 실무자, 마케터, MD, 콘텐츠 기획자, 창업 준비자까지 폭넓게 참고할 수 있도록 구성했습니다.</div>', unsafe_allow_html=True)
     if st.button("안내 내용 펼치기", key="show_guide_btn"):
         st.session_state["show_guide"] = not st.session_state.get("show_guide", False)
     if st.session_state.get("show_guide", False):
         st.markdown(
             """
             <div class="guide-text" style="margin-top:14px; white-space:pre-wrap;">
-<b>1. 이 페이지에서 바로 보는 정보</b>
-서울 실시간 날씨와 공기지수, 패션·온라인마케팅·유통·IT 뉴스, 주요 경제뉴스, 그리고 미샵에 맞춘 실무형 인사이트를 한 번에 확인할 수 있습니다.
+<b>1. 이 페이지에서 확인하는 정보</b>
+서울 기준 실시간 시간과 날씨, 공기지수, 패션·유통·IT·온라인마케팅 뉴스, 주요 경제뉴스, 관련 기관·전문매체 링크, 그리고 기사 흐름을 바탕으로 정리하는 버튼형 인사이트까지 한 번에 볼 수 있습니다.
 
-<b>2. 어떻게 활용하면 좋은가</b>
-오전에는 뉴스 흐름으로 오늘의 소비 분위기와 플랫폼 변화를 확인하고, 인사이트 버튼으로 상품기획·콘텐츠·광고 아이디어를 빠르게 정리하는 용도로 쓰기 좋습니다.
+<b>2. 누가 활용하면 좋은가</b>
+패션 브랜드 운영자, 온라인 쇼핑몰 대표, 유통 실무자, 마케터, 콘텐츠 기획자, 창업 준비자, 정책지원사업을 찾는 소상공인과 스타트업 실무자에게 특히 유용합니다. 업계 흐름을 한 번에 살피고, 당일 업무 우선순위를 정하는 데 도움을 줍니다.
 
-<b>3. 미샵 기준 핵심 포인트</b>
-패션 트렌드 기사만 보지 말고, 소비심리·유통·IT·정책 기사까지 함께 보면 4050 고객의 구매 타이밍, 가격 민감도, 광고 효율 변화까지 더 입체적으로 판단할 수 있습니다.
+<b>3. 인사이트는 어떻게 활용하나</b>
+인사이트 버튼은 당일 수집된 기사 흐름을 바탕으로 상품기획, 콘텐츠 주제, 광고 방향, 프로모션 포인트, 고객 커뮤니케이션 아이디어를 빠르게 정리하는 용도로 활용할 수 있습니다. 아침 회의 전 체크리스트로 쓰거나, 카드뉴스·릴스·블로그 주제를 뽑는 출발점으로 사용해도 좋습니다.
 
-<b>4. 참고 안내</b>
-기사와 관련 사이트는 외부 페이지로 연결되며, 최종 의사결정은 운영자 판단 기준으로 활용해 주세요.
+<b>4. 실무 활용 예시</b>
+소비심리와 유통 뉴스가 약세면 가격 메시지와 혜택 문구를 보수적으로 조정하고, 패션 트렌드와 플랫폼 이슈가 강하면 신상품 노출, 코디 제안, 콘텐츠 업로드 순서를 앞당기는 방식으로 연결할 수 있습니다. 정책·지원 링크는 지원사업 탐색, 정부 공지 확인, 창업·운영 관련 참고 자료 확인용으로 활용할 수 있습니다.
+
+<b>5. 참고 안내</b>
+기사와 관련 사이트는 외부 페이지로 연결되며, 뉴스 수집 결과는 각 매체의 공개 영역과 응답 상태에 따라 달라질 수 있습니다. 인사이트 내용은 참고용 자료이며, 최종 사업 판단과 실행은 사용자의 기준에 맞춰 결정해 주세요.
             </div>
             """,
             unsafe_allow_html=True,
@@ -637,20 +646,11 @@ economy_news = get_economy_news()
 
 st.markdown('<div class="main-title">MISHARP NEWS POST</div>', unsafe_allow_html=True)
 st.markdown('<div class="main-sub">패션/IT/소비유통/경제기사 뉴스/정보 브리핑</div>', unsafe_allow_html=True)
-st.markdown('<div class="title-line"></div>', unsafe_allow_html=True)
-
-st.markdown('<div class="section-title" style="margin-top:0;">미샵을 위한 오늘의 인사이트</div>', unsafe_allow_html=True)
-st.markdown('<div class="guide-text">오늘 수집된 패션·소비유통·IT·경제 뉴스를 바탕으로, 4050 여성 패션 브랜드 미샵에 도움이 될 만한 상품기획·콘텐츠·광고 실행 아이디어를 버튼 클릭으로 생성합니다.</div>', unsafe_allow_html=True)
-if st.button("오늘의 인사이트 생성", key="generate_misharp_insight", use_container_width=False):
-    with st.spinner("기사 흐름을 분석해 미샵 인사이트를 생성하는 중입니다..."):
-        st.session_state["misharp_insight_text"] = generate_misharp_insight(fashion_news, economy_news)
-if st.session_state.get("misharp_insight_text"):
-    st.markdown(f'<div class="guide-box"><div class="guide-text" style="white-space:pre-wrap;">{html.escape(st.session_state["misharp_insight_text"])}</div></div>', unsafe_allow_html=True)
 
 w1, w2 = st.columns([1.2, 1.2])
 with w1:
     st.markdown(
-        f'<div class="info-box">한국시간 · 서울 · {kst.strftime("%Y-%m-%d (%a) %H:%M:%S")}<br>'
+        f'<div class="info-box weather-wrap">한국시간 · 서울 · {kst.strftime("%Y-%m-%d (%a) %H:%M:%S")}<br>'
         f'현재 {fmt_temp(weather.get("temp"))} / 체감 {fmt_temp(weather.get("feel"))} / {weather.get("code_text", "날씨 정보 확인 중")}</div>',
         unsafe_allow_html=True,
     )
@@ -658,10 +658,22 @@ with w2:
     rain = weather.get("rain_prob")
     rain_text = f'강수확률 {int(rain)}%' if rain is not None else '강수확률 정보 없음'
     st.markdown(
-        f'<div class="info-box">서울 실시간 날씨 · 최저 {fmt_temp(weather.get("min"))} / 최고 {fmt_temp(weather.get("max"))}<br>'
+        f'<div class="info-box weather-wrap">서울 실시간 날씨 · 최저 {fmt_temp(weather.get("min"))} / 최고 {fmt_temp(weather.get("max"))}<br>'
         f'{rain_text} · {weather.get("air", "공기지수 정보 없음")}</div>',
         unsafe_allow_html=True,
     )
+
+st.markdown('<div class="soft-divider"></div>', unsafe_allow_html=True)
+
+st.markdown('<div class="section-title" style="margin-top:0;">미샵을 위한 오늘의 인사이트</div>', unsafe_allow_html=True)
+st.markdown('<div class="guide-text insight-intro">오늘 수집된 패션·소비유통·IT·경제 뉴스를 바탕으로, 4050 여성 패션 브랜드 미샵에 도움이 될 만한 상품기획·콘텐츠·광고 실행 아이디어를 버튼 클릭으로 생성합니다.</div>', unsafe_allow_html=True)
+if st.button("오늘의 인사이트 생성", key="generate_misharp_insight", use_container_width=False):
+    with st.spinner("기사 흐름을 분석해 미샵 인사이트를 생성하는 중입니다..."):
+        st.session_state["misharp_insight_text"] = generate_misharp_insight(fashion_news, economy_news)
+if st.session_state.get("misharp_insight_text"):
+    st.markdown(f'<div class="guide-box"><div class="guide-text" style="white-space:pre-wrap;">{html.escape(st.session_state["misharp_insight_text"])}</div></div>', unsafe_allow_html=True)
+
+st.markdown('<div class="section-gap-mid"></div>', unsafe_allow_html=True)
 
 left_col, mid_col, right_col = st.columns([1, 0.03, 1])
 with left_col:
@@ -671,7 +683,10 @@ with mid_col:
 with right_col:
     render_news_section(economy_news, "오늘 주요 경제뉴스", "economy_news")
 
+st.markdown('<div class="soft-divider section-gap-top"></div>', unsafe_allow_html=True)
 render_related_links()
+
+st.markdown('<div class="soft-divider section-gap-top"></div>', unsafe_allow_html=True)
 render_guide()
 
 st.markdown(
