@@ -1,7 +1,6 @@
 streamlit
-feedparser
-pandas
-pytz
 requests
+feedparser
 beautifulsoup4
+pytz
 openai
